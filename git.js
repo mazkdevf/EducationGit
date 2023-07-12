@@ -65,6 +65,71 @@ class EducationGit {
             reject(error);
         }
     });
+
+    filterBenefits = (benefits = [], filter) => new Promise(async (resolve, reject) => {
+        try {
+            var filteredBenefits = benefits.filter(benefit => {
+                var tags = benefit.tags.map(tag => tag.toLowerCase());
+                return tags.includes(filter.toLowerCase());
+            });
+
+            resolve({
+                requestDate: {
+                    timestamp: Date.now(),
+                    dateFormat: "YYYY-MM-DD HH:mm:ss",
+                    date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+                },
+                benefits: {
+                    count: filteredBenefits.length,
+                    list: filteredBenefits
+                },
+                applyForGitHubStudentDeveloperPack: "https://education.github.com/discount_requests/application",
+                information: {
+                    source: "https://education.github.com/pack",
+                    libAuthor: "mazkdevf",
+                    libName: "education-git-benefits",
+                    libVersion: require('./package.json').version,
+                },
+                filter: filter
+            });
+        } catch (error) {
+            reject(error);
+        }           
+    });
+
+    getAllFilters = (benefits = []) => new Promise(async (resolve, reject) => {
+        try {
+            var filters = [];
+            benefits.forEach(benefit => {
+                benefit.tags.forEach(tag => {
+                    if (!filters.includes(tag)) {
+                        filters.push(tag);
+                    }
+                });
+            });
+
+            resolve({
+                requestDate: {
+                    timestamp: Date.now(),
+                    dateFormat: "YYYY-MM-DD HH:mm:ss",
+                    date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
+                },
+                filters: {
+                    count: filters.length,
+                    list: filters
+                },
+                applyForGitHubStudentDeveloperPack: "https://education.github.com/discount_requests/application",
+                information: {
+                    source: "https://education.github.com/pack",
+                    libAuthor: "mazkdevf",
+                    libName: "education-git-benefits",
+                    libVersion: require('./package.json').version,
+                }
+            });
+        } catch (error) {
+            reject(error);
+        }
+    });
 }
 
 module.exports = EducationGit;

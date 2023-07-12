@@ -1,6 +1,6 @@
 {
   "name": "education-github-student-benefits",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A JavaScript library for fetching real-time GitHub Student Pack benefits.",
   "main": "git.js",
   "keywords": [
