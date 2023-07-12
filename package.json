@@ -1,0 +1,20 @@
+{
+    "name": "education-github-student-benefits",
+    "version": "1.0.1",
+    "description": "A JavaScript library for fetching real-time GitHub Student Pack benefits.",
+    "main": "git.js",
+    "keywords": [
+      "github",
+      "student",
+      "benefits",
+      "developer",
+      "pack"
+    ],
+    "author": "mazkdevf",
+    "license": "ISC",
+    "dependencies": {
+      "cheerio": "^1.0.0-rc.12",
+      "node-fetch": "^2.6.12"
+    }
+  }
+  
